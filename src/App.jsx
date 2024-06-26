@@ -12,7 +12,13 @@ export default function App(){
       setActive(null);
     }
   }, [addPage]);
-
+  function deleteTask(index){
+    setProjects(prev=>{
+      const updated=[...prev];
+      updated[active].tasks=updated[active].tasks.filter((task,i)=>i!=index);
+      return updated;
+    })
+  }
   function addTask(taskName,active){
       setProjects(prev=>{
         const updated=[...prev];
@@ -21,6 +27,15 @@ export default function App(){
       })
   }
 
+  function deleteProject(index){
+    setProjects(prev=>{
+      const updated=[...prev];
+      updated=updated.filter((project,i)=>i!=index);
+      return updated;
+    }
+    )
+  }
+  
   function addProject(titleEntered,descriptionEntered,dateEntered){
     setProjects(prevProjects=>
       [
@@ -39,7 +54,7 @@ export default function App(){
         <SlideBar projects={projects} active={setActive} handleAddPage={setAddPage} isActive={active}/>
         {active===null && !addPage && <Page handleAddPage={setAddPage}/>}
         {addPage && <AddProject isActive={active} add={addProject}/>}
-        {active!==null && !addPage && <Project index={active} addTask={addTask} project={projects[active]}/>}
+        {active!==null && !addPage && <Project index={active} addTask={addTask} project={projects[active]} deleteTask={deleteTask} deleteProject={deleteProject}/>}
       </main>
   )
 }

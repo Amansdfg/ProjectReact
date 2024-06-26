@@ -8,13 +8,7 @@ export default function SlideBar({projects, active, handleAddPage,isActive}){
             <ul>
                 {projects.map((project,index)=>(
                     <li key={index}>
-                        <button onClick={()=>active(index)} className={ (isActive===index?'bg-stone-600 ':'') + "p-2 mt-2 text-left bg-opacity-30 w-full text-2xl text-white rounded-md"}>{project.title}</button>
-                        {/* {/* <button 
-                            onClick={() => active(index)} 
-                            className={`${isActive === index ? 'bg-stone-600' : ''} p-2 mt-2 text-left bg-opacity-30 w-full text-2xl text-white`}>
-                            {project.title}
-                        </button> */}
-                        
+                        <button onClick={()=>active(index)} className={ (isActive===index?'bg-stone-600 ':'') + "p-2 mt-2 text-left bg-opacity-30 w-full text-2xl text-white rounded-md"}>{project.title}</button>   
                     </li>
                 ))}
             </ul>
